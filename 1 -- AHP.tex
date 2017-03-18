@@ -1,0 +1,203 @@
+\documentclass[12pt,twoside]{book}
+
+%\usepackage[hmarginratio=7:5]{geometry}
+\usepackage[letterpaper, total={5.75in,9.0in},top=1.0in,left=1.5in,includefoot,includehead]{geometry}
+
+\usepackage{fancyhdr,url}
+\pagestyle{fancy}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+%\renewcommand{\headrulewidth}{0pt}
+\fancyhead[RO,LE]{\thepage}
+
+\raggedright
+
+\usepackage{textpos,setspace}
+
+\doublespacing
+	
+\newcommand\quelle[1]{{%
+\unskip\nobreak\hfil\penalty50
+\hskip2em\hbox{}\nobreak\hfil\textbf{#1}%
+\parfillskip=0pt \finalhyphendemerits=0 \par}}
+\usepackage[style]{fncychap}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{natbib}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{lipsum}
+\usepackage{amsthm,amsmath,amssymb,pxfonts}
+\usepackage{setspace}
+\usepackage{eso-pic}
+\setlength{\parindent}{20pt} %spacing. Prof Wooster's.
+%\usepackage{arydshln,leftidx,mathtools} %package to add horizontal and vertical dashed lines to matrix
+
+%------------------------------------------------------------------------------------------------------
+
+% Giang's are below:
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx,ragged2e,booktabs,caption} %to add table with no vertical line
+
+\usepackage{etoolbox} %to add text above and to the left of matrix
+\let\bbordermatrix\bordermatrix %corresponding commands (4 lines) to modify bordermatrix ( round bracket by default) to square bracket
+\patchcmd{\bbordermatrix}{8.75}{4.75}{}{}
+\patchcmd{\bbordermatrix}{\left(}{\left[}{}{}
+\patchcmd{\bbordermatrix}{\right)}{\right]}{}{}
+
+\usepackage{lscape}
+\usepackage{paralist} %for inline lists
+%\usepackage[ampersand]{easylist} %easy list
+
+%------------------------------------------------------------------------------------------------------
+%Define new theorem
+
+\newtheorem{ex}{Example}[chapter]
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{prop}{Property}[chapter]
+\newtheorem{lem}{Lemma}[chapter]
+
+%------------------------------------------------------------------------------------------------------
+% Giang's are below:
+\newtheorem{cor}{Corollary}[chapter]
+
+\theoremstyle{remark} %change font of remark from italics to normal Roman
+\newtheorem{rem}{Remark}[chapter]
+
+\theoremstyle{definition} %change font of definition from italics to normal Roman
+\newtheorem{definition}{Definition}[chapter]
+
+\def\reals{{\mathbb  R}}
+\def\ul{\underline}
+
+\newcommand{\highlight}[1]{\colorbox{yellow}{#1}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\epsilon}
+\newcommand{\de}{\delta}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}} %change from arrow vector to bold-font vector
+
+
+\newcolumntype{C}[1]{>{\Centering}m{#1}} %minipage (table)
+\renewcommand\tabularxcolumn[1]{C{#1}} %minipage (table)
+
+%\makeatletter %for augmented matrix
+%  \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+%    \hskip -\arraycolsep
+%    \let\@ifnextchar\new@ifnextchar
+%  \array{#1}}
+%\makeatother
+
+%------------------------------------------------------------------------------------------------------
+\begin{document}
+
+\frontmatter
+
+%%%%%%%% THIS IS THE TITLE PAGE %%%%%%%%%%%%
+\begin{titlepage}
+\AddToShipoutPicture*{
+\put(17,0)
+{\includegraphics[scale=2.85]{backgroundpage}}%
+}
+\let\footnoterule\relax
+{\def\\{\noexpand\\}
+\global\gdef\@titl@{{\@title}}}%
+{
+\begin{textblock}{6}(2.20,-.42)
+\begin{singlespace}
+\begin{center}
+{\scshape\Large the analytic hierarchy process: a mathematical model for decision making problems}
+\end{center}
+\end{singlespace}%
+\end{textblock}}
+\begin{textblock}{6}(2.20,2.75)
+\begin{center}
+{\scshape Independent Study Thesis}
+\end{center}
+\end{textblock}  
+\begin{textblock}{7}(1.65,5.15)
+\begin{singlespace}
+\begin{center}
+Presented in Partial Fulfillment of the Requirements for
+the Degree Bachelor of Arts in the
+ Department of Mathematics and Computer Science at The College of Wooster
+\end{center}
+\end{singlespace}
+\end{textblock}
+\begin{textblock}{6}(2.20,7.8)
+\begin{singlespace}
+\begin{center}
+by \\
+Giang Huong Nguyen\\
+\end{center}
+\end{singlespace}
+\end{textblock}
+\bigskip
+
+\begin{textblock}{6}(2.20,8.8)
+{\def\baselinestretch{1}\normalsize
+\begin{center}
+The College of Wooster\\
+2014
+\end{center}}%
+\end{textblock}
+\begin{textblock}{6}(0,11)
+\noindent
+\hspace{1pt}
+\begin{minipage}[b]{\hsize}
+\begin{flushleft}
+{\bfseries Advised by:} \\
+Dr. John Ramsay
+%\second@dvisor
+\end{flushleft}
+\end{minipage}%
+%\par
+ % \@thanks
+\end{textblock}
+  \end{titlepage}%
+  
+\ClearShipoutPicture
+\clearpage\thispagestyle{empty}\null\clearpage
+%%%%%%%% THIS IS THE END OF THE TITLE PAGE %%%%%%
+
+
+
+\include{abstract}
+
+\clearpage\thispagestyle{empty}\null\clearpage
+
+\include{acknowledgements}
+\clearpage\thispagestyle{empty}\null\clearpage
+
+\tableofcontents\thispagestyle{empty}
+\listoffigures
+\listoftables
+\clearpage\thispagestyle{empty}\null\clearpage
+
+\renewcommand\thepage{}
+\pagenumbering{roman}
+
+\mainmatter
+
+\renewcommand\thepage{\arabic{page}} 
+
+\include{introduction}
+\include{chapter2_consistent}
+\include{chapter3_inconsistent}
+\include{chapter4_score}
+\include{chapter5_metrics}
+\include{chapter6_application}
+\include{conclusion}
+
+%\nocite{*}
+\bibliographystyle{plain}
+\bibliography{bibtex}
+
+\end{document} 
